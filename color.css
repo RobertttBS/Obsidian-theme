@@ -1,0 +1,475 @@
+/* ===============================================================
+   1. 自定義色票 (User Color Palette) - 分為淺色/深色
+   =============================================================== */
+
+/* --- ☀️ 淺色模式：汝窯為體，青花為用 --- */
+.theme-light {
+  /* === 基底 === */
+  --user-bg-white:        #F2F7F7;
+  --user-bg-pink-pale:    #E6F0F0;
+  --user-bg-pink-soft:    #DEEBEB;
+  --user-bg-pink-deep:    #D1E3E3;
+  --user-bg-blockquote:   #F0F5F5;
+
+  /* === 文字與粗體 === */
+  --user-text-main:       #2c3e50;
+  --user-text-muted:      #5D7290;
+  --user-text-faint:      #8FA4C4;
+  /* 粗體：使用深邃的普魯士藍，比內文更重一點，但不突兀 */
+  --user-text-bold:       #1A2F45; 
+
+  /* === 標題漸層 (青花濃淡) === */
+  --h1-gradient:          #1C4E80; /* 濃豔蘇麻離青 */
+  --h2-gradient:          #346c9c; /* 中調青花 */
+  --h3-gradient:          #5D8AA8; /* 淺調藍灰 */
+
+  /* === 強調與連結 === */
+  --user-accent-main:     #346c9c;
+  --user-accent-strong:   #B22222; /* 釉裡紅 (僅用於強調/警示) */
+  --user-accent-highlight:#FAEBD7;
+
+  --user-link-internal:   #1C4E80;
+  --user-link-external:   #4A90E2;
+
+  /* === 介面 === */
+  --user-border-light:    #B0C4C4;
+  --user-selection:       rgba(28, 78, 128, 0.35);
+
+  /* === 功能色 === */
+  --user-accent-success:  #6B8E23;
+  --user-accent-warning:  #D4AF37;
+  --user-accent-info:     #6A5ACD;
+  --user-accent-error:    #B22222;
+  --user-theme-pop:       #E0806C;
+
+  --shadow-layer-1: rgba(0, 0, 0, 0.08); /* 淺而近的陰影 */
+  --shadow-layer-2: rgba(0, 0, 0, 0.04); /* 深而遠的陰影 (通常會比近的透明度高一點) */
+
+  /* --- 專用於 3D 物件的浮動陰影 (汝窯溫潤感) --- */
+  /* 強烈的頂部高光，像光打在曲面上 */
+  --float-highlight: inset 0 1.5px 0 0 rgba(255, 255, 255, 0.7);
+  
+  /* 底部內側陰影，製造收邊的圓弧感 (新增) */
+  --float-lowlight: inset 0 -1px 0 0 rgba(0, 0, 0, 0.05);
+
+  /* 外部陰影：非常貼近，不再飛得高高的 */
+  --float-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06); 
+  --float-shadow-2: 0 3px 6px -2px rgba(28, 78, 128, 0.15); /* 稍微帶一點藍的影子 */
+}
+
+/* --- 🌙 深色模式：青花為海，汝瓷為星 --- */
+.theme-dark {
+  /* === 基底 === */
+  --user-bg-white:        #0F1626;
+  --user-bg-pink-pale:    #162138;
+  --user-bg-pink-soft:    #1C2945;
+  --user-bg-pink-deep:    #253555;
+  --user-bg-blockquote:   #152033;
+
+  /* === 文字與粗體 === */
+  --user-text-main:       #F0F8FF;
+  --user-text-muted:      #8CA6A6;
+  --user-text-faint:      #5F7A7A;
+  /* 粗體改色：使用「流沙金/舊宣紙色」，在深藍底上溫潤清晰，不刺眼 */
+  --user-text-bold:       #DCD0B3; 
+
+  /* === 標題漸層 (天青濃淡) === */
+  /* 需求：從濃的天青色轉淡 */
+  --h1-gradient:          #8CD1D1; /* 淡天青 (Pale Cyan) */
+  --h2-gradient:          #63B0B0; /* 正天青 (Medium Cyan) */
+  --h3-gradient:          #469898; /* 濃天青 (Deep Cyan/Teal) */
+
+  /* === 強調與連結 === */
+  --user-accent-main:     #7CC5C5; /* 這是原本的亮色，用於互動元件 */
+  --user-accent-strong:   #8A0908; /* #CD5C5C; /* 印泥紅 (警示用) */
+  --user-accent-highlight:#2F4F4F;
+
+  --user-link-internal:   #A2D99E;
+  --user-link-external:   #6495ED;
+
+  /* === 介面 === */
+  --user-border-light:    #3A5F5F;
+  --user-selection:       rgba(95, 158, 160, 0.35);
+
+  /* === 功能色 === */
+  --user-accent-success:  #66CDAA;
+  --user-accent-warning:  #FFD700;
+  --user-accent-info:     #9370DB;
+  --user-accent-error:    #CD5C5C;
+  --user-theme-pop:       #FF9E8B;
+
+  --shadow-layer-1: rgba(130, 209, 209, 0.15); /* 帶一點天青色的微光 */
+  --shadow-layer-2: rgba(0, 0, 0, 0.5); /* 傳統黑色深陰影，增加對比度 */
+
+  --float-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  --float-lowlight: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  
+  --float-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4); 
+  --float-shadow-2: 0 4px 8px -2px rgba(0, 0, 0, 0.5);
+}
+
+/* ===============================================================
+   2. 核心系統變數對應 (System Mappings)
+   =============================================================== */
+body {
+  /* --- 標題顏色變數綁定 --- */
+  --h1-color: var(--h1-gradient);
+  --h2-color: var(--h2-gradient);
+  --h3-color: var(--h3-gradient);
+  /* H4-H6 使用次要文字色，避免過多色彩干擾 */
+  --h4-color: var(--user-text-muted);
+  --h5-color: var(--user-text-muted);
+  --h6-color: var(--user-text-faint);
+
+  /* --- 連結與背景 --- */
+  --link-color:           var(--user-link-internal);
+  --link-external-color:  var(--user-link-external);
+  --background-primary:       var(--user-bg-white);
+  --background-primary-alt:   var(--user-bg-pink-pale); 
+  --background-secondary:     var(--user-bg-pink-soft);
+  --background-secondary-alt: var(--user-bg-pink-deep);
+
+  /* --- 介面 --- */
+  --titlebar-background:          var(--user-bg-pink-soft);
+  --titlebar-background-focused:  var(--user-bg-pink-soft);
+  --ribbon-background:            var(--user-bg-pink-soft);
+  --ribbon-background-collapsed:  var(--user-bg-pink-soft);
+  --tab-container-background:     var(--user-bg-pink-soft);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--user-accent-main);
+
+  /* --- 文字 --- */
+  --text-normal: var(--user-text-main);
+  --text-muted:  var(--user-text-muted);
+  --text-faint:  var(--user-text-faint);
+
+  /* --- 互動與選取 --- */
+  --interactive-accent:       var(--user-theme-pop);
+  --interactive-accent-hover: var(--user-theme-pop);
+  --text-selection:           var(--user-selection);
+  --text-highlight-bg:        var(--user-accent-highlight);
+
+  /* --- 邊框 --- */
+  --background-modifier-border:       var(--user-border-light);
+  --background-modifier-border-hover: var(--user-accent-main);
+}
+
+/* =================================================================
+   3. 元素樣式覆蓋 (Element Overrides)
+   ================================================================= */
+
+/* --- 粗體字 (Bold) 優化 --- */
+/* 修正：不再使用紅色，改用專屬的 bold color (深色模式為流沙金) */
+strong, b, .cm-strong {
+  color: var(--user-text-bold) !important;
+  font-weight: 600; /* 確保字重足夠 */
+}
+
+/* --- 標題樣式 (Headers) --- */
+/* 顏色已在 body 變數中定義，這裡處理間距與裝飾 */
+
+/* H1 加上底部線條，增強篇章感 */
+.markdown-preview-view h1, 
+.cm-header-1 {
+  border-bottom: 1px solid var(--user-accent-strong); 
+  margin-bottom: 0.8em;
+}
+
+/* --- 列表樣式 (Lists) --- */
+
+/* 圓點列表 (Bullet) */
+.list-bullet:after,
+.cm-formatting-list-ul {
+  color: var(--user-accent-main) !important;
+}
+
+/* 數字列表 (Number) - 修正：改為跟 Bullet 一樣的顏色 */
+.cm-formatting-list-ol {
+  color: var(--user-accent-main) !important; /* 原本是 accent-strong (紅)，現在改為 main (青) */
+}
+/* 預覽模式下的數字列表 */
+ol > li::marker {
+  color: var(--user-accent-main) !important;
+  font-weight: bold;
+}
+
+/* --- 連結懸停 --- */
+a:hover, .internal-link:hover, .external-link:hover, .cm-link:hover, .cm-url:hover {
+  background-color: var(--user-bg-pink-pale);
+  text-decoration: none;
+}
+
+/* --- 引用區塊 (Blockquote) --- */
+blockquote {
+  background-color: var(--user-bg-blockquote);
+  color: var(--user-text-muted);
+  border-color: var(--user-accent-main) !important; 
+  box-shadow: 0 4px 6px -1px var(--shadow-layer-1),
+              0 2px 4px -2px var(--shadow-layer-2);
+}
+
+/* --- 標籤與標記 (Tags & Marks) --- */
+.tag, .cm-hashtag {
+  background-color: var(--user-accent-highlight) !important;
+  color: var(--user-text-main) !important;
+}
+mark {
+  background-color: var(--user-accent-highlight);
+  color: var(--user-text-main);
+}
+
+/* --- Checkbox --- */
+input[type="checkbox"] {
+  border-color: var(--user-accent-main);
+  appearance: none; 
+  -webkit-appearance: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+input[type="checkbox"]:checked {
+  /* background-color: var(--user-accent-success); /* 打勾變成綠色，代表完成 */
+  /* border-color: var(--user-accent-success); /* 邊框 */
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 2px var(--user-bg-white);
+} 
+
+/* 移除已完成任務的刪除線，改為文字變淡 */
+.task-list-item.is-checked {
+  text-decoration: none !important;
+  color: var(--user-text-faint) !important;
+}
+/* 確保 checkbox 後面的文字顏色跟隨 li 變化 */
+.task-list-item.is-checked .task-list-item-checkbox ~ * {
+  color: var(--user-text-faint);
+  /* text-decoration: line-through; /* 如果想要刪除線可保留這行 */
+}
+
+/* ===============================================================
+   4. 程式碼與表格 (Technical Elements)
+   =============================================================== */
+
+/* 行內程式碼 */
+body .cm-s-obsidian span.cm-inline-code,
+body .markdown-preview-view :not(pre) > code,
+code {
+    /* color: var(--user-theme-pop) !important; /* 使用 pop 顏色在 inline code 上 */
+}
+
+/* 程式碼區塊 */
+.markdown-preview-view pre code,
+.cm-s-obsidian pre.HyperMD-codeblock {
+  background-color: var(--user-bg-pink-pale) !important;
+  color: var(--user-text-main) !important;
+  border: 1px solid var(--user-bg-pink-deep);
+}
+
+/* 表格 */
+.markdown-preview-view table {
+  border-color: var(--user-border-light);
+}
+.markdown-preview-view table thead tr > th {
+  background-color: var(--user-bg-pink-deep);
+  color: var(--user-text-main);
+  border-bottom-color: var(--user-accent-main);
+}
+.markdown-preview-view table tbody tr:nth-child(even) {
+  background-color: var(--user-bg-pink-pale);
+}
+
+/* 分隔線 */
+hr {
+  border: none;
+  border-top: 2px solid var(--user-border-light);
+  opacity: 0.5;
+}
+
+/* ===============================================================
+   5. 介面微調 (UI Tweaks)
+   =============================================================== */
+
+/* 檔案列表目前開啟的檔案 */
+.nav-file-title.is-active {
+  background-color: var(--user-bg-pink-deep);
+  color: var(--user-accent-main);
+  border-left: 4px solid var(--user-theme-pop); /* 改為珊瑚色，更顯眼 */
+  border-radius: 0 4px 4px 0;
+}
+.nav-file-title:hover {
+  background-color: var(--user-bg-pink-pale);
+}
+
+/* 側邊欄折疊圖示 */
+.collapse-icon {
+  color: var(--user-theme-pop) !important;
+}
+
+
+/* ===============================================================
+   修正 MacOS 滾動條樣式
+   =============================================================== */
+/* 1. 關鍵：必須設定寬度與高度，才會觸發自定義渲染，否則 MacOS 會強制使用原生樣式 */
+::-webkit-scrollbar {
+  width: 10px;  /* 垂直滾動條寬度 */
+  height: 6px; /* 水平滾動條高度 */
+  background-color: transparent; /* 軌道背景透明 */
+}
+
+/* 2. 滾動條的滑塊 (Thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--user-accent-strong);
+  border-radius: 6px; /* 圓角 */
+  border: 2px solid transparent; /* 增加透明邊框，讓滑塊看起來「懸浮」且變細一點，更優雅 */
+  background-clip: content-box; /* 讓顏色只填滿內容區，配合上面的 border 實現變細效果 */
+}
+
+/* 3. 滾動條的軌道 (Track) - 通常設為透明，以免太突兀 */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* 4. 游標懸停時，讓滑塊顏色加深或變更 (可選) */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--user-accent-main); /* 懸停時變回青色/天青色 */
+}
+
+/* ===============================================================
+   6. Graph View & Callouts
+   =============================================================== */
+.theme-dark .graph-view.color-fill,
+.theme-light .graph-view.color-fill { color: var(--user-text-muted); }
+.graph-view.color-circle { color: var(--user-accent-main); }
+.graph-view.color-line { color: var(--user-border-light); }
+.graph-view.color-text { color: var(--user-text-main); }
+
+/* ===============================================================
+   Callout 優化版：微凸起實體 (Subtle Bulge)
+   =============================================================== */
+.callout {
+    /* 1. 空間設定：依照您的需求，維持較小的間距 */
+    overflow: visible !important;
+    margin: 0.6em 2px !important; /* 上下微調至 0.6，左右極小，避免打斷閱讀流 */
+    border: none !important; 
+    
+    /* 2. 形狀：適中的圓潤 */
+    border-radius: 10px !important; 
+    
+    /* 3. 關鍵：光影堆疊 */
+    box-shadow: 
+        var(--float-highlight), /* 頂部高光 (亮) */
+        var(--float-lowlight),  /* 底部內陰影 (暗) -> 這會讓底部看起來像收進去，增加曲度 */
+        var(--float-shadow-1),  /* 貼地陰影 */
+        var(--float-shadow-2) !important; /* 柔和擴散陰影 */
+
+    /* 4. 互動微調 */
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* --- 淺色模式專屬美化：加入「釉面感」漸層 --- */
+.theme-light .callout {
+    /* 這裡做了兩層背景：
+       1. 上層：白色漸層 (從透白到透明)，模擬頂部受光
+       2. 下層：原本的顏色 */
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+    background-color: color-mix(in srgb, var(--callout-color) 15%, var(--user-bg-white)) !important;
+    
+    /* 加上極細的邊框線，讓輪廓更清楚一點 */
+    border: 1px solid rgba(255,255,255, 0.4) !important;
+}
+
+/* --- 深色模式專屬美化 --- */
+.theme-dark .callout {
+    /* 深色模式漸層要反過來，或者比較微弱 */
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.1) 100%);
+    background-color: color-mix(in srgb, var(--callout-color) 20%, var(--user-bg-pink-soft)) !important;
+    border: 1px solid rgba(255,255,255, 0.05) !important;
+}
+
+/* --- 懸停效果 --- */
+.callout:hover {
+    /* 因為不再強調懸浮，所以移動距離縮小 */
+    transform: translateY(-1px);
+    
+    /* 懸停時，讓影子稍微深一點點即可，不需要擴散太大 */
+    box-shadow: 
+        var(--float-highlight),
+        var(--float-lowlight),
+        0 2px 4px rgba(0,0,0,0.1),
+        0 6px 12px -2px rgba(0,0,0,0.15) !important;
+}
+
+/* --- 內部微調 --- */
+/* 讓標題與內容稍微緊湊一點，配合比較小的 Margin */
+.callout-title { padding: 10px 14px 6px 14px; }
+.callout-content { padding: 0 14px 14px 14px; }
+
+/* Callout 顏色映射 */
+.callout[data-callout="note"] { 
+    --callout-color: var(--user-accent-info); 
+    background-color: color-mix(in srgb, var(--user-accent-info) 15%, transparent) !important;
+}
+.callout[data-callout="tip"], .callout[data-callout="success"] { 
+    --callout-color: var(--user-accent-success); 
+    background-color: color-mix(in srgb, var(--user-accent-success) 15%, transparent) !important;
+}
+.callout[data-callout="warning"] { 
+    --callout-color: var(--user-accent-warning); 
+    background-color: color-mix(in srgb, var(--user-accent-warning) 15%, transparent) !important;
+}
+.callout[data-callout="error"] { 
+    --callout-color: var(--user-accent-error); 
+    background-color: color-mix(in srgb, var(--user-accent-error) 15%, transparent) !important;
+}
+
+/* 標籤內的 # 符號 */
+.cm-hashtag-begin {
+  color: var(--user-accent-strong) !important;
+  font-weight: bold;
+}
+
+/* 讓標籤文字保持原本的顏色，形成紅+黑/紅+白的對比 */
+.cm-hashtag-end {
+  color: var(--user-text-main) !important;
+}
+
+/* 側邊欄項目懸停時，左側出現紅色細線 */
+.nav-file-title:hover,
+.nav-folder-title:hover {
+  box-shadow: inset 4px 0 0 0 var(--user-accent-strong);
+}
+
+/* 活躍的分頁頂部線條 */
+.workspace-tab-header.is-active {
+  box-shadow: inset 0 2px 0 0 var(--user-accent-strong);
+}
+
+/* 水平分隔線 (Horizontal Rule) - 整條紅色 */
+hr {
+  border: none;
+  height: 1px; /* 如果覺得 1px 太細，可以改成 2px */
+  
+  /* 清除之前的漸層設定，改用單一背景色 */
+  background-image: none;
+  background-color: var(--user-accent-strong);
+  
+  opacity: 1; /* 確保不透明 */
+  margin: 2em 0; /* 保持上下的間距呼吸感 */
+}
+
+/* 註腳引用 [^1] */
+.cm-footref {
+  color: var(--user-accent-strong) !important;
+}
+
+/* 雙中括號 [[ ]] 的顏色 */
+.cm-formatting-link {
+  color: var(--user-accent-strong) !important;
+}
+
+/* 外部連結的小圖示 (如果有顯示的話) */
+.external-link-icon {
+  color: var(--user-accent-strong) !important;
+}

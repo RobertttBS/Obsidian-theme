@@ -1,0 +1,346 @@
+/*
+==================================================
+ 核心 CSS 變數定義 (使用 body 確保覆蓋主題預設變數)
+==================================================
+*/
+body {
+    /* --- 基礎設定與圓角 --- */
+    --radius-sm: 8px;
+    /* --file-line-width: 110rem;  行寬調整 */
+    --font-medium: 550; /* 中等字重 */
+
+    /* --- 連結與列表 --- */
+    --link-external-decoration: none;
+    --link-decoration: none;
+    --checklist-done-decoration: none; /* 去除勾選後的 line-through */
+    --checklist-done-color: var(--text-normal); /* 勾選後維持原樣 */
+    
+    /* --- Blockquotes 變數 (用於浮動卡片效果) --- */
+    --blockquote-border-thickness: 0; /* 移除左側邊框 */
+    
+    /* * [已修正]
+     * 已移除 "–-text-normal: #EFEFF4;" 這一行。
+     * 在 body 層級重定義 --text-normal 會覆蓋主題的預設文字顏色，
+     * 導致 Light Mode (淺色模式) 下文字顏色錯誤 (變為淺色)。
+     */
+    
+    /* [已修正] 
+     * 以下 Blockquote 和 Embeds 的 "顏色" 相關變數
+     * 已被移至 .theme-dark 和 .theme-light 中，
+     * 以避免在淺色模式下出錯。
+     */
+
+    /* --- Embeds 變數 (用於裸露嵌入) --- */
+    /* [註] 以下為 "佈局" 相關變數，保留為全局設定 */
+    --embed-border-start: none;
+    --embed-padding: 0 1.25em 0 0;
+}
+
+/*
+==================================================
+ 全局設定
+==================================================
+*/
+
+/* 讓粗體更粗 (通用設定) */
+strong,
+.cm-strong {
+    font-weight: 800;
+}
+
+/* 去除 external-link 的 icon */
+.external-link {
+  background-image: none;
+  padding-right: 0px;
+}
+
+
+/*
+==================================================
+ 主題模式專屬設定 (Dark/Light)
+==================================================
+*/
+
+/* --- 黑色主題調整 --- */
+body.theme-dark {
+
+    /* 反白顏色 */
+    --text-selection: rgba(255, 213, 0, 0.4);
+
+    /* --- [已移入] Blockquote 變數 (Dark Mode) --- */
+    --color-base-80: #C2C5D1; /* 接近灰白色 */
+    --color-base-30: #5D5D66; /* 接近深灰色 */
+    --trans-faint-05: rgba(255, 255, 255, 0.065); /* 輕微透明白色背景 */
+    --blockquote-color: var(--color-base-80);
+    --blockquote-border-color: var(--color-base-30);
+    --blockquote-background-color: var(--trans-faint-05);
+
+    /* --- [已移入] 陰影定義 (Dark Mode) --- */
+    --trans-faint-40: rgba(255, 255, 255, 0.125);
+    --trans-dark-00: rgba(0, 0, 0, 0.375);
+    --my-blockquote-shadow: 
+        0 -0.25px 0 0.375px var(--trans-faint-40),
+        0 0.375px 2px 0px var(--trans-dark-00);
+
+    /* --- [已移入] Embeds 顏色變數 (Dark Mode) --- */
+    --background-primary-alt: #1F1F27; /* Dark Mode 的 Primary Alt 背景色 */
+    --color-base-50: #888899; /* 較淡的基礎色 */
+    --text-faint-color: var(--color-base-50); /* 褪色文字/圖示 */
+    --icon-color: var(--color-base-50); /* 圖示顏色 */
+    --color-accent-1: #4C97DB; /* 藍色 (用於 Blockquote 內的連結顏色) */
+    
+    /* --- [新增] Inline Code (Notion 樣式) (Dark Mode) --- */
+    --inline-code-bg: rgba(255, 255, 255, 0.12); /* 輕微透明白色背景 */
+    --inline-code-text: #FF7878; /* 偏亮的紅色文字 */
+
+    /* 當前編輯行的底色效果 */
+    .markdown-source-view.mod-cm6 .cm-line.cm-active {
+        background-color: rgba(128, 128, 128, 0.1);
+        border-radius: 4px;
+    }
+}
+
+/* --- 淺色主題調整 --- */
+body.theme-light {
+    /* 連結顏色 */
+    --link-external-color: #4a90e2;
+    --link-color: #228b22;
+
+    /* --- [已新增] Blockquote 變數 (Light Mode) --- */
+    --blockquote-color: #4A4A4F; /* [淺色模式] 較深的文字顏色 */
+    --blockquote-border-color: #E0E0E0; /* [淺色模式] 淺灰色邊框 */
+    --blockquote-background-color: rgba(0, 0, 0, 0.03); /* [淺色模式] 非常淡的灰色背景 */
+
+    /* --- [已新增] 陰影定義 (Light Mode) --- */
+    --trans-faint-40: rgba(0, 0, 0, 0.05); /* [淺色模式] 陰影的淺色部分 */
+    --trans-dark-00: rgba(0, 0, 0, 0.15); /* [淺色模式] 陰影的深色部分 */
+    --my-blockquote-shadow: 
+        0 -0.25px 0 0.375px var(--trans-faint-40),
+        0 0.375px 2px 0px var(--trans-dark-00);
+
+    /* --- [已新增] Embeds 顏色變數 (Light Mode) --- */
+    --background-primary-alt: #F5F5F5; /* [淺色模式] 淺灰色背景 */
+    --color-base-50: #666666; /* [淺色模式] 中灰色文字 */
+    --text-faint-color: var(--color-base-50);
+    --icon-color: var(--color-base-50);
+    --color-accent-1: #4a90e2; /* [淺色模式] 沿用外部連結藍色 */
+    
+    /* --- [新增] Inline Code (Notion 樣式) (Light Mode) --- */
+    --inline-code-bg: rgba(0, 0, 0, 0.06); /* 非常淡的灰色背景 */
+    --inline-code-text: #B31D1D; /* 偏暗的紅色文字 */
+
+    /* 當前編輯行的底色效果 */
+    .markdown-source-view.mod-cm6 .cm-line.cm-active {
+        background-color: rgba(128, 128, 128, 0.07);
+        border-radius: 4px;
+    }
+}
+
+
+/*
+==================================================
+ 引用區塊 (Blockquote) 樣式
+==================================================
+*/
+.el-blockquote blockquote,
+.callout-content blockquote {
+    /* 核心卡片外觀 */
+    border-radius: var(--radius-sm);
+    /* * [已修改] 
+     * 已更新為使用您專屬的變數
+     */
+    box-shadow: var(--my-blockquote-shadow);
+    
+    /* 顏色與邊框 (確保浮動卡片效果) */
+    background-color: var(--blockquote-background-color); 
+    color: var(--blockquote-color);
+    border-left: var(--blockquote-border-thickness) solid var(--blockquote-border-color);
+
+    /* 內邊距與定位 */
+    padding-block: 12px;
+    padding-inline: 1em;
+    position: relative;
+
+    /* 確保引文塊內部的粗體、斜體和連結顏色正確 */
+    & * {
+        --bold-color: var(--blockquote-color);
+        --italic-color: var(--blockquote-color);
+        --link-color: var(--color-accent-1);
+        color: inherit; /* 繼承父層文字顏色 */
+    }
+}
+
+
+/*
+==================================================
+ 筆記嵌入 (Note Embeds) 樣式
+==================================================
+*/
+
+/* 統一隱藏 markdown 嵌入標題 (裸露嵌入效果) */
+.markdown-embed-title {
+    display: none;
+}
+
+/* 根據 alt 屬性控制標題大小 */
+.internal-embed:is([alt~=h2]) .markdown-embed-title {
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  display: block; /* 覆蓋 display: none; */
+}
+
+.internal-embed:is([alt~=h1]) .markdown-embed-title {
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  display: block; /* 覆蓋 display: none; */
+}
+
+/* 設置嵌入連結圖示 (右上角) 的顏色 */
+.markdown-embed-link {
+    color: var(--text-faint-color);
+}
+
+/* 特殊嵌入樣式 (H5 標題卡片) */
+.markdown-embed:has(.el-h5:is(:only-of-type,:last-child)) {
+    background-color: var(--background-primary-alt);
+    border-radius: var(--radius-sm);
+    border: none;
+    padding: 8px;
+}
+.markdown-embed .el-h5:is(:only-of-type,:last-child) {
+    text-align: center;
+    & h5 {
+        color: var(--color-base-50);
+        font-size: 0.875em;
+        font-weight: var(--font-medium);
+    }
+}
+
+/* 檔案嵌入 (如 PDF, 圖片等) 的通用樣式 */
+.file-embed.mod-generic {
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-medium);
+    --text-muted: var(--color-base-50);
+    --text-normal: var(--icon-color);
+}
+
+/* 檔案嵌入的標題微調 */
+.file-embed-title {
+    padding-top: 0.125rem;
+}
+
+/* 調整 inline embed 的 padding (使用高特異性覆蓋) */
+.markdown-source-view .inline-embed > .markdown-embed-content > .markdown-source-view,
+.markdown-preview-view .inline-embed > .markdown-embed-content > .markdown-preview-view {
+  padding: 0;
+}
+
+
+/*
+==================================================
+ [新增] Inline Code (Notion 樣式) - V2 (提高權重)
+==================================================
+*/
+
+/* * 1. 編輯模式 (Live Preview) 的 Inline Code 
+ * 2. 閱讀模式的 Inline Code (使用 :not(pre) > code 排除 code block)
+ *
+ * [註] 使用 !important 確保覆蓋主題預設樣式
+ */
+
+body .cm-s-obsidian span.cm-inline-code,
+body .markdown-preview-view :not(pre) > code,
+code {
+    font-family: var(--font-monospace) !important; /* 使用 Obsidian 的等寬字體變數 */
+    background-color: var(--inline-code-bg) !important;
+    color: var(--inline-code-text) !important;
+    font-size: 0.9em !important; /* 略微縮小字體 */
+    padding: 2px 5px !important; /* 上下 2px, 左右 5px */
+    border-radius: 5px !important; /* 圓角 */
+    text-shadow: none !important; /* 移除主題可能自帶的文字陰影 */
+    border: none !important; /* 確保無邊框 */
+    vertical-align: baseline !important; /* 對齊基準線 */
+    letter-spacing: 0.2px !important; /* 輕微字距 */
+    margin: 0 2px; /* 統一邊距 */
+}
+
+/* * [註] 
+ * 先前用於微調 padding/margin 的獨立規則已被合併到上方的主規則中，
+ * 以簡化並確保樣式生效。
+ */
+
+
+/*
+==================================================
+ 其他元素調整
+==================================================
+*/
+
+/* 調整匹配字串的高亮(搜尋） */
+.markdown-source-view.mod-cm6 .cm-s-obsidian span.cm-matched-string {
+  background-color: rgba(255, 215, 0, 0.4); /* 金黃色背景 */
+  text-decoration: none; /* 移除底線 */
+  color: inherit; /* 避免文字顏色被 other 樣式覆蓋 */
+  border-radius: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* 調整 "source" property 的 icon */
+.metadata-property[data-property-key="source"] .metadata-property-icon svg {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E") no-repeat center;
+  color: var(--icon-color);
+  background-color: var(--icon-color);
+}
+
+/* 調整 Obsidian Canvas 被點選時的顏色 */
+.canvas-node.is-selected .canvas-node-container, .canvas-node.is-focused .canvas-node-container {
+  border-color: #FF69B4; /* 亮粉色 (Hot Pink) */
+  box-shadow: var(--shadow-stationary), 0 0 0 2px rgba(255, 105, 180, 0.4);
+}
+
+.canvas-selection.mod-group-selection {
+  border-width: 3px;
+  border-radius: 3px;
+  background-color: rgba(255, 105, 180, 0.1);
+  border-color: rgba(255, 105, 180, 0.5);
+  pointer-events: initial;
+}
+
+/* Dynamic Highlighter 的 matched-string 樣式 */
+.cm-s-obsidian span.cm-matched-string {
+  background-color: rgba(255, 215, 0, 0.4); /* 金黃色背景，40% 透明度 */
+  text-decoration: none !important; /* 強制移除底線 */
+  color: inherit !important; /* 避免文字顏色被其他樣式覆蓋 */
+  border-radius: 3px; /* 加上一點圓角，更好看 */
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* --- 修改 Obsidian 預覽視窗 (Popover) 的尺寸 --- */
+.popover.hover-popover {
+    /* -- 寬度設定 -- */
+    width: 600px !important;  /* 您想要的寬度，預設通常約為 400px */
+    max-width: 80vw !important; /* 防止在小螢幕上超出邊界 */
+
+    /* -- 高度設定 -- */
+    height: 500px !important; /* 固定高度 */
+    max-height: 70vh !important; /* 最大高度限制 */
+    
+    /* -- 讓內容可以捲動 -- */
+    overflow-y: auto; 
+}
+
+/* 確保內部嵌入內容適應新的高度 */
+.popover.hover-popover .markdown-embed {
+    height: 100% !important;
+    max-height: none !important;
+    width: 100% !important;
+    Max-width: none !important;
+}
+
+/* (選用) 調整預覽視窗內的圖片大小限制，避免圖片過大 */
+.popover.hover-popover img {
+    max-width: 100%;
+}
