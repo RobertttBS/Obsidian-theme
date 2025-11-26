@@ -445,3 +445,13 @@ input[type="checkbox"]:checked {
 .workspace-tab-header.is-active { box-shadow: inset 0 2px 0 0 var(--user-accent-strong); }
 .cm-footref, .cm-formatting-link, .external-link-icon { color: var(--user-accent-strong) !important; }
 
+/* 水平線 (Horizontal Rule) */
+hr {
+  border: none;
+  height: 1px; /* 1px 或 2px 皆可 */
+  background-color: var(--user-accent-strong);
+  opacity: 1;
+  
+  width: 90%;        /* 設定線條長度為容器的 90% */
+  margin: 0.5em auto !important; /* 上下 0.5em，左右自動置中 (auto) */
+}
