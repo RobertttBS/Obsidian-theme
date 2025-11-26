@@ -42,7 +42,7 @@
   --user-accent-info:     #6A5ACD;
   --user-accent-error:    #B22222;
   --user-accent-quote:    #929292;
-  --user-accent-example:  #4B0082;
+  --user-accent-example:  #53789E;
   --user-accent-background: #9B59B6;
 
   --user-theme-pop:       #E0806C;
@@ -55,6 +55,15 @@
   --float-lowlight: inset 0 -1px 0 0 rgba(0, 0, 0, 0.05);
   --float-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06); 
   --float-shadow-2: 0 3px 6px -2px rgba(28, 78, 128, 0.15);
+
+  /* HSL 轉換結果：色相 0 (紅), 飽和度 68%, 亮度 42% */
+  --accent-h: 0;
+  --accent-s: 68%;
+  --accent-l: 42%;
+  
+  /* 重新宣告以確保生效 */
+  --interactive-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --interactive-accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 5%));
 }
 
 /* --- 🌙 深色模式：青花為海，汝瓷為星 --- */
@@ -108,6 +117,18 @@
   --float-lowlight: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
   --float-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4); 
   --float-shadow-2: 0 4px 8px -2px rgba(0, 0, 0, 0.5);
+
+  /* HSL 轉換結果：色相 359 (紅), 飽和度 89%, 亮度 29% */
+  --accent-h: 359;
+  --accent-s: 89%;
+  --accent-l: 29%; 
+
+  /* ⚠️ 注意：亮度 29% 在深色背景下可能略顯黯淡
+     如果不夠明顯，可以試著把上面的 --accent-l 改成 40% 或 50% */
+
+  /* 重新宣告以確保生效 */
+  --interactive-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --interactive-accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 5%));
 }
 
 /* ===============================================================
@@ -146,8 +167,6 @@ body {
   --text-faint:  var(--user-text-faint);
 
   /* --- 互動 --- */
-  --interactive-accent:       var(--user-theme-pop);
-  --interactive-accent-hover: var(--user-theme-pop);
   --text-selection:           var(--user-selection);
   --text-highlight-bg:        var(--user-accent-highlight);
 
