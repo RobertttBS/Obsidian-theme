@@ -252,7 +252,7 @@ body .cm-s-obsidian span.cm-inline-code,
 body .markdown-preview-view :not(pre) > code,
 code {
     font-family: var(--font-monospace) !important; /* 使用 Obsidian 的等寬字體變數 */
-    background-color: var(--inline-code-bg) !important;
+    background-color: var(--inline-code-bg);
     color: var(--inline-code-text) !important;
     font-size: 0.9em !important; /* 略微縮小字體 */
     padding: 2px 5px !important; /* 上下 2px, 左右 5px */
