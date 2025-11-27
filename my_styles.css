@@ -63,10 +63,6 @@ strong,
 
 /* --- 黑色主題調整 --- */
 body.theme-dark {
-
-    /* 反白顏色 */
-    --text-selection: rgba(255, 213, 0, 0.4);
-
     /* --- [已移入] Blockquote 變數 (Dark Mode) --- */
     --color-base-80: #C2C5D1; /* 接近灰白色 */
     --color-base-30: #5D5D66; /* 接近深灰色 */
@@ -92,12 +88,6 @@ body.theme-dark {
     /* --- [新增] Inline Code (Notion 樣式) (Dark Mode) --- */
     --inline-code-bg: rgba(255, 255, 255, 0.12); /* 輕微透明白色背景 */
     --inline-code-text: #FF7878; /* 偏亮的紅色文字 */
-
-    /* 當前編輯行的底色效果 */
-    .markdown-source-view.mod-cm6 .cm-line.cm-active {
-        background-color: rgba(128, 128, 128, 0.1);
-        border-radius: 4px;
-    }
 }
 
 /* --- 淺色主題調整 --- */
@@ -128,12 +118,6 @@ body.theme-light {
     /* --- [新增] Inline Code (Notion 樣式) (Light Mode) --- */
     --inline-code-bg: rgba(0, 0, 0, 0.06); /* 非常淡的灰色背景 */
     --inline-code-text: #B31D1D; /* 偏暗的紅色文字 */
-
-    /* 當前編輯行的底色效果 */
-    .markdown-source-view.mod-cm6 .cm-line.cm-active {
-        background-color: rgba(128, 128, 128, 0.07);
-        border-radius: 4px;
-    }
 }
 
 

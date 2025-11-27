@@ -33,7 +33,7 @@
 
   /* === 介面 === */
   --user-border-light:    #B0C4C4;
-  --user-selection:       rgba(28, 78, 128, 0.35);
+  --user-selection:       rgba(255, 213, 0, 0.4);
 
   /* === Callout 專用色系 === */
   --user-accent-tip:      #74bfbb;
@@ -96,7 +96,7 @@
 
   /* === 介面 === */
   --user-border-light:    #3A5F5F;
-  --user-selection:       rgba(95, 158, 160, 0.35);
+  --user-selection:       rgba(255, 213, 0, 0.4);
 
   /* === Callout 專用色系 (新增/深色適配) === */
   --user-accent-tip:      #48C9B0;
@@ -167,12 +167,18 @@ body {
   --text-faint:  var(--user-text-faint);
 
   /* --- 互動 --- */
-  --text-selection:           var(--user-selection);
+  --text-selection:           var(--user-selection) !important;
   --text-highlight-bg:        var(--user-accent-highlight);
 
   /* --- 邊框 --- */
   --background-modifier-border:       var(--user-border-light);
   --background-modifier-border-hover: var(--user-accent-main);
+
+  /* --- 當前編輯行 --- */
+  .markdown-source-view.mod-cm6 .cm-line.cm-active {
+    background-color: var(--user-bg-pink-deep) !important;
+    border-radius: 4px;
+  }
 }
 
 /* =================================================================
@@ -291,7 +297,7 @@ input[type="checkbox"]:checked {
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--user-accent-strong);
+  background-color: var(--user-accent-strong) !important;
   border-radius: 6px;
   border: 2px solid transparent;
   background-clip: content-box;
@@ -316,6 +322,12 @@ input[type="checkbox"]:checked {
    7. Callout 通用設定 (3D 實體感)
    =============================================================== */
 .callout {
+	  word-break: break-word;     /* 讓長單字在邊界處斷行 */
+    overflow-wrap: anywhere;    /* 強制長網址或無空白字串在任何地方斷行 */
+    white-space: normal;        /* 確保文字正常換行 */
+    max-width: 100%;            /* 確保寬度不超過父容器 */
+    box-sizing: border-box;     /* 確保 Padding 不會導致寬度計算錯誤 */
+
     overflow: visible !important;
     margin: 0.6em 2px !important;
     border: none !important; 
@@ -446,9 +458,10 @@ input[type="checkbox"]:checked {
 .cm-footref, .cm-formatting-link, .external-link-icon { color: var(--user-accent-strong) !important; }
 
 /* 水平線 (Horizontal Rule) */
+.markdown-preview-view hr,
 hr {
   border: none;
-  height: 1px; /* 1px 或 2px 皆可 */
+  height: 1px;
   background-color: var(--user-accent-strong);
   opacity: 1;
 }
