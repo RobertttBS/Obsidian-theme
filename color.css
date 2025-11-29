@@ -379,54 +379,38 @@ input[type="checkbox"]:checked {
    Group: Tip
    Aliases: hint, important
 */
-.callout[data-callout="abstract"], .callout[data-callout="summary"], .callout[data-callout="tldr"],
-.callout[data-callout="tip"], .callout[data-callout="hint"], .callout[data-callout="important"] {
+.callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="tip"], [data-callout="hint"], [data-callout="important"]) {
     --callout-color: var(--user-accent-tip);
     --callout-icon: "lucide-lightbulb"; /* 預設圖示，可被 Obsidian 內建覆蓋 */
     background-color: color-mix(in srgb, var(--user-accent-tip) 25%, transparent) !important;
 }
 
-/*
-   Group: Note
-   Group: Info
-   Group: Todo
-*/
-.callout[data-callout="note"],
-.callout[data-callout="info"],
-.callout[data-callout="todo"] {
+/* Group: Note, Info, Todo */
+.callout:is([data-callout="note"], [data-callout="info"], [data-callout="todo"]) {
     --callout-color: var(--user-accent-info);
     background-color: color-mix(in srgb, var(--user-accent-info) 25%, transparent) !important;
 }
 
-/*
-   Group: Success
-   Aliases: check, done
-*/
-.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"] {
+/* Group: Success, Aliases: check, done */
+.callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) {
     --callout-color: var(--user-accent-success);
     background-color: color-mix(in srgb, var(--user-accent-success) 25%, transparent) !important;
 }
 
 /*
-   Group: Question
-   Aliases: help, faq
-   Group: Warning
-   Aliases: caution, attention
+   Group: Question (help, faq)
+   Group: Warning (caution, attention)
 */
-.callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"],
-.callout[data-callout="warning"], .callout[data-callout="caution"], .callout[data-callout="attention"] {
+.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"], [data-callout="warning"], [data-callout="caution"], [data-callout="attention"]) {
     --callout-color: var(--user-accent-warning);
     background-color: color-mix(in srgb, var(--user-accent-warning) 25%, transparent) !important;
 }
 
 /*
-   Group: Failure
-   Aliases: fail, missing
-   Group: Danger
-   Aliases: error, bug
+   Group: Failure (fail, missing)
+   Group: Danger (error, bug)
 */
-.callout[data-callout="failure"], .callout[data-callout="fail"], .callout[data-callout="missing"],
-.callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="bug"] {
+.callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
     --callout-color: var(--user-accent-error);
     background-color: color-mix(in srgb, var(--user-accent-error) 25%, transparent) !important;
 }
@@ -435,12 +419,12 @@ input[type="checkbox"]:checked {
    Group: Quote
    Aliases: cite
 */
-.callout[data-callout="quote"], .callout[data-callout="cite"] {
+.callout:is([data-callout="quote"], [data-callout="cite"]) {
     --callout-color: var(--user-accent-background);
     background-color: color-mix(in srgb, var(--user-accent-quote) 25%, transparent) !important;
 }
 
-.callout[data-callout="example"], .callout[data-callout="e.g."] {
+.callout:is([data-callout="example"], [data-callout="e.g."]) {
     --callout-color: var(--user-accent-example);
     background-color: color-mix(in srgb, var(--user-accent-example) 25%, transparent) !important;
 }
