@@ -67,3 +67,16 @@ h1, h2, h3, h4, h5, h6, strong, b {
   font-family: var(--user-font-text) !important;
   font-weight: 700 !important;
 }
+
+/* ====================================================== */
+/* 6. 修正 Metadata (Properties) 區域字體             */
+/* ====================================================== */
+
+/* 針對整個 Metadata 容器、標籤(Key) 與 內容(Value) */
+.metadata-properties-title,
+.metadata-property-key,
+.metadata-property-value,
+.text-button-label {
+  font-family: var(--user-font-text) !important;
+  letter-spacing: var(--letter-spacing-norm) !important;
+}

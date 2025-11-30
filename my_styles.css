@@ -260,16 +260,6 @@ code {
 ==================================================
 */
 
-/* 調整匹配字串的高亮(搜尋） */
-.markdown-source-view.mod-cm6 .cm-s-obsidian span.cm-matched-string {
-  background-color: rgba(255, 215, 0, 0.4); /* 金黃色背景 */
-  text-decoration: none; /* 移除底線 */
-  color: inherit; /* 避免文字顏色被 other 樣式覆蓋 */
-  border-radius: 3px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
 /* 調整 "source" property 的 icon */
 .metadata-property[data-property-key="source"] .metadata-property-icon svg {
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E") no-repeat center;
@@ -293,6 +283,7 @@ code {
 }
 
 /* Dynamic Highlighter 的 matched-string 樣式 */
+.markdown-source-view.mod-cm6 .cm-s-obsidian span.cm-matched-string,
 .cm-s-obsidian span.cm-matched-string {
   background-color: rgba(255, 215, 0, 0.4); /* 金黃色背景，40% 透明度 */
   text-decoration: none !important; /* 強制移除底線 */

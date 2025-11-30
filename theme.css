@@ -1,3 +1,6 @@
+/* 引入字體：同時引入 Source Serif 4, Lora, PT Serif 以及 Noto Serif TC */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Noto+Serif+TC:wght@300;400;700&family=PT+Serif:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap');
+
 /* ===============================================================
    1. 自定義色票 (User Color Palette) - 分為淺色/深色
    =============================================================== */
@@ -9,7 +12,8 @@
   --user-bg-pink-pale:    #E6F0F0;
   --user-bg-pink-soft:    #DEEBEB;
   --user-bg-pink-deep:    #D1E3E3;
-  --user-bg-blockquote:   #F0F5F5;
+  --user-bg-blockquote:   #e0f0f0;
+  --user-active-line:     #e5eded99;
 
   /* === 文字與粗體 === */
   --user-text-main:       #2c3e50;
@@ -28,7 +32,7 @@
   --user-accent-strong:   #B22222; /* 釉裡紅 (僅用於強調/警示) */
   --user-accent-highlight:#FAEBD7;
 
-  --user-link-internal:   #1C4E80;
+  --user-link-internal:   #4c9677;
   --user-link-external:   #4A90E2;
 
   /* === 介面 === */
@@ -64,6 +68,22 @@
   /* 重新宣告以確保生效 */
   --interactive-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
   --interactive-accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 5%));
+
+  /* inline-code 樣式 */
+  --user-inline-code-bg: rgba(0, 0, 0, 0.06);
+  --user-inline-code-text: #B31D1D;
+
+  /* --color-accent-1: #4C97DB; /* 會直接蓋到某些樣式的顏色 */
+
+/* 文字：使用飽和的赤紅/鐵鏽紅，對比背景的青藍色 */
+  --user-tag-color:            #C0392B; 
+  /* Hover 文字：轉為更鮮豔的胭脂紅 */
+  --user-tag-color-hover:      #E74C3C;
+  
+  /* 背景：帶有粉橘調的淺紅，像宣紙上的硃砂暈染 */
+  --user-tag-background:       #FADBD8; 
+  /* Hover 背景：加強飽和度，變成溫暖的杏桃色 */
+  --user-tag-background-hover: #F5CBA7;
 }
 
 /* --- 🌙 深色模式：青花為海，汝瓷為星 --- */
@@ -73,11 +93,12 @@
   --user-bg-pink-pale:    #162138;
   --user-bg-pink-soft:    #1C2945;
   --user-bg-pink-deep:    #253555;
-  --user-bg-blockquote:   #152033;
+  --user-bg-blockquote:   #2b3952;
+  --user-active-line:     #17213a;
 
   /* === 文字 === */
   --user-text-main:       #F0F8FF;
-  --user-text-muted:      #8CA6A6;
+  --user-text-muted:      #C0D4D4;
   --user-text-faint:      #5F7A7A;
   --user-text-bold:       #DCD0B3; /* 流沙金 */
 
@@ -129,6 +150,21 @@
   /* 重新宣告以確保生效 */
   --interactive-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
   --interactive-accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 5%));
+
+  --user-inline-code-bg: var(--user-bg-pink-deep);
+  --user-inline-code-text: #FF7878;
+
+  /* --color-accent-1: #4C97DB; /* 會直接蓋到某些樣式的顏色 */
+
+/* 文字：明亮的琥珀金，在深色背景極為突出 */
+  --user-tag-color:            #FFD700;
+  /* Hover 文字：轉為更暖的橙金色，增加熱度感 */
+  --user-tag-color-hover:      #FFC300;
+
+  /* 背景：使用半透明的深棕金色，模擬金漆底色 */
+  --user-tag-background:       rgba(255, 215, 0, 0.15);
+  /* Hover 背景：提高亮度和不透明度，產生光暈感 */
+  --user-tag-background-hover: rgba(255, 215, 0, 0.25);
 }
 
 /* ===============================================================
@@ -176,9 +212,32 @@ body {
 
   /* --- 當前編輯行 --- */
   .markdown-source-view.mod-cm6 .cm-line.cm-active {
-    background-color: var(--user-bg-pink-deep) !important;
+    background-color: var(--user-active-line) !important;
     border-radius: 4px;
   }
+
+  /* --- 連結與列表 --- */
+  --link-external-decoration: none;
+  --link-decoration: none;
+
+  /* checklist */
+  --checklist-done-decoration: none; /* 去除勾選後的 line-through */
+  --checklist-done-color: var(--text-normal); /* 勾選後維持原樣 */
+
+  --radius-sm: 12px; /* --- 基礎設定與圓角 --- */
+  --font-medium: 550; /* 中等字重 */
+    
+  /* --- Blockquotes 變數 (用於浮動卡片效果) --- */
+  --blockquote-border-thickness: 0; /* 移除左側邊框 */
+
+  --embed-border-start: none;
+  --embed-padding: 0 1.25em 0 0;
+
+  /* --- Tags 樣式 --- */
+  --tag-color: var(--user-tag-color);
+  --tag-color-hover: var(--user-tag-color-hover);
+  --tag-background: var(--user-tag-background);
+  --tag-background-hover: var(--user-tag-background-hover);
 }
 
 /* =================================================================
@@ -217,23 +276,14 @@ a:hover, .internal-link:hover, .external-link:hover, .cm-link:hover, .cm-url:hov
   text-decoration: none;
 }
 
-/* 引用區塊 (Blockquote) */
-blockquote {
-  background-color: var(--user-bg-blockquote);
-  color: var(--user-text-muted);
-  border-color: var(--user-accent-main) !important; 
-  box-shadow: 0 4px 6px -1px var(--shadow-layer-1),
-              0 2px 4px -2px var(--shadow-layer-2);
-}
-
 /* Tags & Marks */
 .tag, .cm-hashtag {
-  background-color: var(--user-accent-highlight) !important;
-  color: var(--user-text-main) !important;
+  background-color: var(--user-tag-background) !important;
+  color: var(--user-tag-color) !important;
 }
 mark {
-  background-color: var(--user-accent-highlight);
-  color: var(--user-text-main);
+  background-color: var(--user-tag-background);
+  color: var(--user-tag-color);
 }
 
 /* Checkbox */
@@ -249,6 +299,12 @@ input[type="checkbox"]:checked {
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: inset 0 0 2px var(--user-bg-white);
+}
+
+/* 去除 external-link 的 icon */
+.external-link {
+  background-image: none;
+  padding-right: 0px;
 }
 
 /* ===============================================================
@@ -318,7 +374,7 @@ input[type="checkbox"]:checked {
    7. Callout 通用設定 (3D 實體感)
    =============================================================== */
 .callout {
-	  word-break: break-word;     /* 讓長單字在邊界處斷行 */
+	word-break: break-word;     /* 讓長單字在邊界處斷行 */
     overflow-wrap: anywhere;    /* 強制長網址或無空白字串在任何地方斷行 */
     white-space: normal;        /* 確保文字正常換行 */
     max-width: 100%;            /* 確保寬度不超過父容器 */
@@ -432,8 +488,8 @@ input[type="checkbox"]:checked {
 /* ===============================================================
    9. 其他細節 (Misc)
    =============================================================== */
-.cm-hashtag-begin { color: var(--user-accent-strong) !important; font-weight: bold; }
-.cm-hashtag-end { color: var(--user-text-main) !important; }
+/* .cm-hashtag-begin { color: var(--user-accent-strong) !important; font-weight: bold; } /* 暫時移除 edit view 的 tag 樣式 */
+/* .cm-hashtag-end { color: var(--user-tag-color) !important; background-color: var(--user-tag-background);} /* 暫時移除 edit view 的 tag 樣式 */
 .workspace-tab-header.is-active { box-shadow: inset 0 2px 0 0 var(--user-accent-strong); }
 .cm-footref, .cm-formatting-link, .external-link-icon { color: var(--user-accent-strong) !important; }
 
@@ -444,4 +500,306 @@ hr {
   height: 1px;
   background-color: var(--user-accent-strong);
   opacity: 1;
+}
+
+/* 搜尋結果高亮，配合 dynamic highlighter plugin */
+.cm-s-obsidian span.cm-matched-string,
+.markdown-source-view.mod-cm6 .cm-s-obsidian span.cm-matched-string {
+  background-color: rgba(255, 215, 0, 0.4); /* 金黃色背景 */
+  text-decoration: none; /* 移除底線 */
+  color: inherit; /* 避免文字顏色被 other 樣式覆蓋 */
+  border-radius: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* ===================================================
+ 修改 Obsidian 預覽視窗 (Popover) 的尺寸
+ =================================================== */
+.popover.hover-popover {
+    /* -- 寬度設定 -- */
+    width: 600px !important;  /* 您想要的寬度，預設通常約為 400px */
+    max-width: 80vw !important; /* 防止在小螢幕上超出邊界 */
+
+    /* -- 高度設定 -- */
+    height: 500px !important; /* 固定高度 */
+    max-height: 70vh !important; /* 最大高度限制 */
+    
+    /* -- 讓內容可以捲動 -- */
+    overflow-y: auto; 
+}
+
+/* 確保內部嵌入內容適應新的高度 */
+.popover.hover-popover .markdown-embed {
+    height: 100% !important;
+    max-height: none !important;
+    width: 100% !important;
+    Max-width: none !important;
+}
+
+/* (選用) 調整預覽視窗內的圖片大小限制，避免圖片過大 */
+.popover.hover-popover img {
+    max-width: 100%;
+}
+
+/* 調整 "source" property 的 icon */
+.metadata-property[data-property-key="source"] .metadata-property-icon svg {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E") no-repeat center;
+  color: var(--icon-color);
+  background-color: var(--icon-color);
+}
+
+
+/* ===================================================
+ 調整 Obsidian Canvas 節點被選取時的樣式
+ =================================================== */
+.canvas-node.is-selected .canvas-node-container, .canvas-node.is-focused .canvas-node-container {
+  border-color: var(--user-accent-strong);
+}
+
+.canvas-selection.mod-group-selection {
+  border-width: 3px;
+  border-radius: 3px;
+  border-color: var(--user-accent-strong);
+  pointer-events: initial;
+}
+
+/* ===============================================================
+   Blockquote 3D 實體化 (完全復刻 Callout 樣式)
+   =============================================================== */
+/* --- 1. 閱讀模式 (Reading View) - 完美的 3D 盒裝 --- */
+.markdown-preview-view blockquote {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0.6em 2px !important;
+    
+    /* 去除 Obsidian 預設的引用直線 */
+    border-left: none !important; 
+    
+    /* 統一 Padding (取 Callout 標題與內容的中間值) */
+    padding: 12px 16px !important;
+    
+    /* 核心：3D 實體感 (圓角 + 陰影) */
+    border-radius: 10px !important;
+    box-shadow: 
+        var(--float-highlight),
+        var(--float-lowlight), 
+        var(--float-shadow-1), 
+        var(--float-shadow-2) !important;
+        
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* --- 2. 光影與材質設定 (分淺/深色模式) --- */
+
+/* ☀️ 淺色模式：汝窯釉面感 */
+.theme-light .markdown-preview-view blockquote {
+    /* 背景漸層 */
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+    background-color: var(--user-bg-blockquote); /* 確保有底色 */
+    
+    /* 玻璃感邊框 */
+    border: 1px solid rgba(255,255,255, 0.4) !important;
+    
+    /* 文字顏色 */
+    color: var(--user-text-main);
+}
+
+/* 🌙 深色模式：微弱光感 */
+.theme-dark .markdown-preview-view blockquote {
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.1) 100%);
+    background-color: var(--user-bg-blockquote);
+    border: 1px solid rgba(255,255,255, 0.05) !important;
+    color: var(--user-text-main);
+}
+
+/* --- 3. 懸停浮動效果 (Hover Effect) --- */
+.markdown-preview-view blockquote:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        var(--float-highlight),
+        var(--float-lowlight),
+        0 2px 4px rgba(0,0,0,0.1),
+        0 6px 12px -2px rgba(0,0,0,0.15) !important;
+}
+
+/* 注意：編輯模式無法做成「單一盒子」，因此我們只同步「背景色」與「文字色」，
+   並保留左側線條，讓它在編輯時看起來整潔，不會像斷裂的積木。
+*/
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+    background-color: var(--user-bg-blockquote) !important;
+    color: var(--user-text-main);
+    
+    /* 為了配合 3D 風格，這裡使用您設定的深綠色作為左側裝飾線 */
+    border-left-color: var(--user-accent-strong) !important;
+    border-left-width: 3px !important;
+    
+    /* 微調間距 */
+    padding-left: 12px !important;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    
+    /* 確保沒有奇怪的預設陰影干擾 */
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/*
+ * 1. 編輯模式 (Live Preview) 的 Inline Code 
+ * 2. 閱讀模式的 Inline Code (使用 :not(pre) > code 排除 code block)
+ *
+ * [註] 使用 !important 確保覆蓋主題預設樣式
+ */
+body .cm-s-obsidian span.cm-inline-code,
+body .markdown-preview-view :not(pre) > code,
+code {
+    font-family: var(--font-monospace) !important; /* 使用 Obsidian 的等寬字體變數 */
+    background-color: var(--user-inline-code-bg);
+    color: var(--user-inline-code-text) !important;
+    font-size: 0.9em !important; /* 略微縮小字體 */
+    padding: 2px 5px !important; /* 上下 2px, 左右 5px */
+    border-radius: 5px !important; /* 圓角 */
+    text-shadow: none !important; /* 移除主題可能自帶的文字陰影 */
+    border: none !important; /* 確保無邊框 */
+    vertical-align: baseline !important; /* 對齊基準線 */
+    letter-spacing: 0.2px !important; /* 輕微字距 */
+    margin: 0 2px; /* 統一邊距 */
+}
+
+/*
+==================================================
+ 筆記嵌入 (Note Embeds) 樣式
+==================================================
+*/
+
+/* 統一隱藏 markdown 嵌入標題 (裸露嵌入效果) */
+.markdown-embed-title {
+    display: none;
+}
+
+/* 根據 alt 屬性控制標題大小 */
+.internal-embed:is([alt~=h2]) .markdown-embed-title {
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  display: block; /* 覆蓋 display: none; */
+}
+
+.internal-embed:is([alt~=h1]) .markdown-embed-title {
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  display: block; /* 覆蓋 display: none; */
+}
+
+/* 設置嵌入連結圖示 (右上角) 的顏色 */
+.markdown-embed-link {
+    color: var(--text-faint-color);
+}
+
+/* 特殊嵌入樣式 (H5 標題卡片) */
+.markdown-embed:has(.el-h5:is(:only-of-type,:last-child)) {
+    background-color: var(--background-primary-alt);
+    border-radius: var(--radius-sm);
+    border: none;
+    padding: 8px;
+}
+.markdown-embed .el-h5:is(:only-of-type,:last-child) {
+    text-align: center;
+    & h5 {
+        color: var(--color-base-50);
+        font-size: 0.875em;
+        font-weight: var(--font-medium);
+    }
+}
+
+/* 檔案嵌入 (如 PDF, 圖片等) 的通用樣式 */
+.file-embed.mod-generic {
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-medium);
+    --text-muted: var(--color-base-50);
+    --text-normal: var(--icon-color);
+}
+
+/* 檔案嵌入的標題微調 */
+.file-embed-title {
+    padding-top: 0.125rem;
+}
+
+/* 調整 inline embed 的 padding (使用高特異性覆蓋) */
+.markdown-source-view .inline-embed > .markdown-embed-content > .markdown-source-view,
+.markdown-preview-view .inline-embed > .markdown-embed-content > .markdown-preview-view {
+  padding: 0;
+}
+
+
+/* ===============================================================
+   字體設定 (Font Settings)
+   =============================================================== */
+/* 定義變數 */
+:root {  
+  /* 選項 A (預設): Source Serif 4 - 與思源宋體系出同門，數字最整齊 */
+  --english-font: 'Source Serif 4';
+  
+  /* 選項 B: Lora - 帶有書法筆觸，優雅且適合螢幕 */
+  /* --english-font: 'Lora'; */
+  
+  /* 選項 C: PT Serif - 寬敞端正，學術感強，可讀性高 */
+  /* --english-font: 'PT Serif'; */
+
+  /* 字體優先順序：選定的英文 -> 思源宋體 (中) -> 預設襯線 */
+  /* 加上 Apple System Font 等是為了在尚未載入時有較好的系統預設 */
+  --user-font-text: var(--english-font), 'Noto Serif TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', serif !important;
+  
+  /* 排版參數：高行高與寬字距，營造書本閱讀感 */
+  --line-height-normal: 1.8 !important; 
+  --letter-spacing-norm: 0.05em !important;
+}
+
+/* 核心區域：針對「筆記內容」套用完整樣式 */
+/* 閱讀模式 (Reading View) */
+.markdown-preview-view {
+  font-family: var(--user-font-text) !important;
+  line-height: var(--line-height-normal) !important;
+  letter-spacing: var(--letter-spacing-norm) !important;
+}
+
+/* 編輯模式 (Source Mode / Live Preview) */
+.markdown-source-view .cm-scroller {
+  font-family: var(--user-font-text) !important;
+  line-height: var(--line-height-normal) !important;
+  letter-spacing: var(--letter-spacing-norm) !important;
+}
+
+/* 強制修正渲染後的段落與列表 */
+.markdown-rendered p,
+.markdown-rendered li,
+.markdown-rendered ul,
+.markdown-rendered ol {
+  font-family: var(--user-font-text) !important;
+  letter-spacing: var(--letter-spacing-norm) !important;
+  line-height: var(--line-height-normal) !important;
+}
+
+/* 全域區域：針對「App 介面」套用安全樣式 */
+body, .app-container {
+  font-family: var(--user-font-text) !important;
+}
+
+/* 標題與強調樣式 */
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-family: var(--user-font-text) !important;
+  font-weight: 700 !important;
+}
+
+/* 修正 Metadata (Properties) 區域字體 */
+/* 針對整個 Metadata 容器、標籤(Key) 與 內容(Value) */
+.metadata-properties-title,
+.metadata-property-key,
+.metadata-property-value,
+.text-button-label {
+  font-family: var(--user-font-text) !important;
+  letter-spacing: var(--letter-spacing-norm) !important;
 }
