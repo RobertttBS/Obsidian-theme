@@ -511,15 +511,10 @@ hr {
  =================================================== */
 .popover.hover-popover {
     /* -- 寬度設定 -- */
-    width: 600px !important;  /* 您想要的寬度，預設通常約為 400px */
-    max-width: 80vw !important; /* 防止在小螢幕上超出邊界 */
+    width: 600px;  /* 您想要的寬度，預設通常約為 400px */
 
     /* -- 高度設定 -- */
-    height: 500px !important; /* 固定高度 */
-    max-height: 70vh !important; /* 最大高度限制 */
-    
-    /* -- 讓內容可以捲動 -- */
-    overflow-y: auto; 
+    height: 500px; /* 固定高度 */
 }
 
 /* 確保內部嵌入內容適應新的高度 */
