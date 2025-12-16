@@ -122,7 +122,7 @@
   /* === Callout 專用色系 (新增/深色適配) === */
   --user-accent-tip:      #55e9cc;
   --user-accent-success:  #538731;
-  --user-accent-warning:  #ffb700;
+  --user-accent-warning:  rgb(255, 149, 20);
   --user-accent-info:     #1A6598;
   --user-accent-error:    #f32f2f;
   --user-accent-quote:    #d2d0d0;
@@ -512,9 +512,11 @@ hr {
 .popover.hover-popover {
     /* -- 寬度設定 -- */
     width: 600px;  /* 您想要的寬度，預設通常約為 400px */
+    /* max-width: 80vw; /* 防止在小螢幕上超出邊界 */
 
     /* -- 高度設定 -- */
     height: 500px; /* 固定高度 */
+    /* max-height: 70vh; /* 最大高度限制 */
 }
 
 /* 確保內部嵌入內容適應新的高度 */
@@ -777,4 +779,14 @@ h1, h2, h3, h4, h5, h6, strong, b {
 .text-button-label {
   font-family: var(--user-font-text) !important;
   letter-spacing: var(--letter-spacing-norm) !important;
+}
+
+/* 修改 Graph View (關聯圖) 的字體 */
+.graph-view.view-master {
+    font-family: var(--user-font-text) !important;
+}
+
+/* 如果你也想改「局部關聯圖 (Local Graph)」的字體，請加上這段 */
+.workspace-leaf-content[data-type="localgraph"] .graph-view.view-master {
+    font-family: var(--user-font-text) !important;
 }
