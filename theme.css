@@ -545,13 +545,13 @@ hr {
  調整 Obsidian Canvas 節點被選取時的樣式
  =================================================== */
 .canvas-node.is-selected .canvas-node-container, .canvas-node.is-focused .canvas-node-container {
-  border-color: var(--user-accent-strong);
+  border-color: #FF69B4; /* var(--user-accent-strong); */
 }
 
 .canvas-selection.mod-group-selection {
   border-width: 3px;
   border-radius: 3px;
-  border-color: var(--user-accent-strong);
+  border-color: #FF69B4; /* var(--user-accent-strong); */
   pointer-events: initial;
 }
 

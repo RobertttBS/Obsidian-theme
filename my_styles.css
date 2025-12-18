@@ -278,7 +278,7 @@ code {
   border-width: 3px;
   border-radius: 3px;
   background-color: rgba(255, 105, 180, 0.1);
-  border-color: rgba(255, 105, 180, 0.5);
+  border-color: #FF69B4;
   pointer-events: initial;
 }
 
