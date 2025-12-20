@@ -813,3 +813,114 @@ h1, h2, h3, h4, h5, h6, strong, b {
 .mermaid:hover {
     overflow-x: auto;
 }
+
+
+/* ===============================================================
+   幻燈片設定 (Obsidian core plugin: slides)
+   =============================================================== */
+
+/* 1. 全域變數設定 (控制中心) */
+.reveal {
+    /* === 🎛️ MASTER SWITCH === */
+    /* Change this ONE value to scale the entire presentation */
+    /* Recommended: 20px to 40px depending on screen size */
+    --slide-base-size: 20px; 
+
+    /* === 📐 RATIOS (Multipliers) === */
+    /* These define how much bigger headers are compared to normal text */
+    --h1-ratio: 1.9;  /* H1 is 2.5x bigger than base */
+    --h2-ratio: 1.7;
+    --h3-ratio: 1.5;
+    --h4-ratio: 1.3;
+    --h5-ratio: 1.2;
+    --h6-ratio: 1.1;
+    --code-ratio: 0.85; /* Code is usually slightly smaller */
+
+    /* === ⚙️ CALCULATIONS (Do not touch these usually) === */
+    --p-size: var(--slide-base-size);
+    
+    --user-h1-size: calc(var(--slide-base-size) * var(--h1-ratio));
+    --user-h2-size: calc(var(--slide-base-size) * var(--h2-ratio));
+    --user-h3-size: calc(var(--slide-base-size) * var(--h3-ratio));
+    --user-h4-size: calc(var(--slide-base-size) * var(--h4-ratio));
+    --user-h5-size: calc(var(--slide-base-size) * var(--h5-ratio));
+    --user-h6-size: calc(var(--slide-base-size) * var(--h6-ratio));
+    
+    --user-code-size: calc(var(--slide-base-size) * var(--code-ratio));
+}
+
+/* 2. 版面配置與滾動條 (強制內容可滾動) */
+.reveal .slides > section,
+.reveal .slides > section > section,
+.reveal .slides section {
+    overflow-y: auto !important;  /* 內容過長時顯示滾動條 */
+    height: 100% !important;      /*以此確保滾動條正常運作 */
+    display: block !important;
+    text-align: left !important;  /* 強制靠左對齊 */
+}
+
+/* ==排版與字體大小== */
+
+/* 3. 對齊重置 (強制靠左) */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6, 
+.reveal p, .reveal ul, .reveal ol {
+    text-align: left !important;
+    margin-left: 0 !important;
+}
+
+/* 4. 標題樣式 (H1-H6) */
+.reveal h1 {
+    font-size: var(--user-h1-size) !important;
+    text-transform: none !important;
+    color: var(--h1-gradient);
+}
+
+.reveal h2 {
+    font-size: var(--user-h2-size) !important;
+    text-transform: none !important;
+    color: var(--h2-gradient);
+}
+
+.reveal h3 {
+    font-size: var(--user-h3-size) !important;
+    text-transform: none !important;
+    color: var(--h3-gradient);
+}
+
+.reveal h4, .reveal h5, .reveal h6 {
+    font-size: var(--user-h4-size) !important;
+    text-transform: none !important;
+    color: var(--user-text-muted);
+}
+
+/* 5. 內文與列表 (p, li 統一大小) */
+.reveal p, 
+.reveal li,
+.reveal ol {
+    font-size: var(--slide-base-size) !important; /* 參照上方的變數設定 */
+    line-height: 1.5 !important;
+}
+
+/* Adjust text size inside code blocks */
+.reveal pre {
+    font-size: var(--user-code-size);  /* Increase/Decrease this value */
+    font-family: 'Fira Code', 'Consolas', monospace; /* Optional: Change font */
+}
+
+
+/* 7. 表格樣式 */
+.reveal table {
+    font-size: var(--slide-base-size) !important; /* 跟隨內文大小 */
+    line-height: 1.2 !important;
+    display: block !important;
+    overflow: auto !important;
+    max-height: 90vh !important;
+    width: 100% !important;
+}
+
+.reveal table th {
+    position: sticky; /* 固定表頭 */
+    top: 0;
+    background-color: var(--background-primary);
+    z-index: 1;
+}
