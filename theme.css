@@ -48,6 +48,7 @@
   --user-accent-quote:    #929292;
   --user-accent-example:  #6A5ACD;
   --user-accent-background: #9B59B6;
+  --user-callout-title:   #000000;
 
   --user-theme-pop:       #E0806C;
 
@@ -128,6 +129,7 @@
   --user-accent-quote:    #d2d0d0;
   --user-accent-example:  #9370DB;
   --user-accent-background: #AF7AC5;
+  --user-callout-title:   #FFFFFF;
 
   --user-theme-pop:       #FF9E8B;
 
@@ -367,7 +369,7 @@ input[type="checkbox"]:checked {
    7. Callout 通用設定 (3D 實體感)
    =============================================================== */
 .callout {
-	word-break: break-word;     /* 讓長單字在邊界處斷行 */
+	  word-break: break-word;     /* 讓長單字在邊界處斷行 */
     overflow-wrap: anywhere;    /* 強制長網址或無空白字串在任何地方斷行 */
     white-space: normal;        /* 確保文字正常換行 */
     max-width: 100%;            /* 確保寬度不超過父容器 */
@@ -398,6 +400,10 @@ input[type="checkbox"]:checked {
 .theme-dark .callout {
     background-image: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.1) 100%);
     border: 1px solid rgba(255,255,255, 0.05) !important;
+}
+
+.callout-title {
+    color: var(--user-callout-title);
 }
 
 /* 懸停效果 */
@@ -923,4 +929,42 @@ h1, h2, h3, h4, h5, h6, strong, b {
     top: 0;
     background-color: var(--background-primary);
     z-index: 1;
+}
+
+/* 1. Reset the Callout Container */
+.reveal .callout {
+    /* Force the callout to use your base size variable */
+    font-size: var(--slide-base-size) !important; 
+    
+    /* Optional: Fix spacing around the box */
+    margin: 1em 0;
+    line-height: 1.4;
+    border-radius: 8px; /* Softer corners */
+}
+
+/* 2. Fix the Huge Title */
+.reveal .callout-title {
+    /* Set title size to be just slightly larger than base text */
+    font-size: 1.1rem !important; 
+    color: var(--user-text-muted);
+    
+    /* Ensure padding looks normal */
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center; /* Vertically align icon and text */
+}
+
+/* 3. Fix the Icon Size */
+.reveal .callout-icon {
+    /* Prevent icon from being massive */
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+    display: flex; /* Fix alignment issues */
+}
+
+.reveal .callout-icon svg {
+    /* Ensure SVG fits the container */
+    width: 100%;
+    height: 100%;
 }
