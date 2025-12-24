@@ -1,0 +1,442 @@
+/* ===============================================================
+   Color Settings Only - Obsidian Snippet
+   Can be independently enabled in Obsidian Settings > Appearance > CSS Snippets
+   =============================================================== */
+
+/* ===============================================================
+   1. User Color Palette
+   =============================================================== */
+
+/* --- ☀️ 淺色模式：汝窯為體，青花為用 --- */
+.theme-light {
+  /* === 基底 === */
+  --user-bg-white:        #F2F7F7;
+  --user-bg-pink-pale:    #E6F0F0;
+  --user-bg-pink-soft:    #DEEBEB;
+  --user-bg-pink-deep:    #D1E3E3;
+  --user-bg-blockquote:   #e0f0f0;
+  --user-active-line:     #dde7e7;
+  --user-canvas-bg:       #f6f8f8;
+  --user-canvas-node:     #f0f5f5;
+
+  /* === 文字與粗體 === */
+  --user-text-main:       #2c3e50;
+  --user-text-muted:      #5D7290;
+  --user-text-faint:      #8FA4C4;
+  --user-text-bold:       #1A2F45;
+
+  /* === 標題漸層 (青花濃淡) === */
+  --h1-gradient:          #1C4E80;
+  --h2-gradient:          #346c9c;
+  --h3-gradient:          #5D8AA8;
+
+  /* === 強調與連結 === */
+  --user-accent-main:     #346c9c;
+  --user-accent-strong:   #B22222;
+  --user-accent-highlight:#FAEBD7;
+
+  --user-link-internal:   #4c9677;
+  --user-link-external:   #4A90E2;
+
+  /* === 介面 === */
+  --user-border-light:    #B0C4C4;
+  --user-selection:       rgba(255, 213, 0, 0.4);
+
+  /* === Callout === */
+  --user-accent-tip:      #74bfbb;
+  --user-accent-success:  #6B8E23;
+  --user-accent-warning:  #D4AF37;
+  --user-accent-info:     #53789E;
+  --user-accent-error:    #B22222;
+  --user-accent-quote:    #929292;
+  --user-accent-example:  #6A5ACD;
+  --user-accent-background: #9B59B6;
+  --user-callout-title:   #000000;
+
+  --user-theme-pop:       #E0806C;
+
+  /* === HSL Accent === */
+  --accent-h: 0;
+  --accent-s: 68%;
+  --accent-l: 42%;
+  --interactive-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --interactive-accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 5%));
+
+  /* === Inline Code === */
+  --user-inline-code-bg: rgba(0, 0, 0, 0.06);
+  --user-inline-code-text: #B31D1D;
+
+  /* === Tags === */
+  --user-tag-color:            #C0392B;
+  --user-tag-color-hover:      #E74C3C;
+  --user-tag-background:       #FADBD8;
+  --user-tag-background-hover: #F5CBA7;
+
+  /* === Canvas Colors === */
+  --canvas-red: 255, 100, 100;
+  --canvas-orange: 255, 144, 21;
+  --canvas-yellow: 255, 230, 100;
+  --canvas-green: 100, 200, 150;
+  --canvas-blue: 100, 200, 255;
+  --canvas-purple: 180, 150, 255;
+}
+
+/* --- 🌙 深色模式：青花為海，汝瓷為星 --- */
+.theme-dark {
+  /* === 基底 === */
+  --user-bg-white:        #0F1626;
+  --user-bg-pink-pale:    #162138;
+  --user-bg-pink-soft:    #1C2945;
+  --user-bg-pink-deep:    #253555;
+  --user-bg-blockquote:   #2b3952;
+  --user-active-line:     #1b2843;
+  --user-canvas-bg:       #0f1626;
+  --user-canvas-node:     #191f2d;
+
+  /* === 文字 === */
+  --user-text-main:       #F0F8FF;
+  --user-text-muted:      #C0D4D4;
+  --user-text-faint:      #5F7A7A;
+  --user-text-bold:       #DCD0B3;
+
+  /* === 標題漸層 === */
+  --h1-gradient:          #8CD1D1;
+  --h2-gradient:          #7CC4C4;
+  --h3-gradient:          #6DB7B7;
+
+  /* === 強調與連結 === */
+  --user-accent-main:     #7CC5C5;
+  --user-accent-strong:   #8A0908;
+  --user-accent-highlight:#2F4F4F;
+
+  --user-link-internal:   #A2D99E;
+  --user-link-external:   #6495ED;
+
+  /* === 介面 === */
+  --user-border-light:    #3A5F5F;
+  --user-selection:       rgba(255, 213, 0, 0.4);
+
+  /* === Callout === */
+  --user-accent-tip:      #55e9cc;
+  --user-accent-success:  #538731;
+  --user-accent-warning:  rgb(255, 149, 20);
+  --user-accent-info:     #1A6598;
+  --user-accent-error:    #f32f2f;
+  --user-accent-quote:    #d2d0d0;
+  --user-accent-example:  #9370DB;
+  --user-accent-background: #AF7AC5;
+  --user-callout-title:   #FFFFFF;
+
+  --user-theme-pop:       #FF9E8B;
+
+  /* === HSL Accent === */
+  --accent-h: 359;
+  --accent-s: 89%;
+  --accent-l: 29%;
+  --interactive-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --interactive-accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 5%));
+
+  /* === Inline Code === */
+  --user-inline-code-bg: var(--user-bg-pink-deep);
+  --user-inline-code-text: #FF7878;
+
+  /* === Tags === */
+  --user-tag-color:            #FFD700;
+  --user-tag-color-hover:      #FFC300;
+  --user-tag-background:       rgba(255, 215, 0, 0.15);
+  --user-tag-background-hover: rgba(255, 215, 0, 0.25);
+
+  /* === Canvas Colors === */
+  --canvas-red: 255, 90, 90;
+  --canvas-orange: 255, 103, 0;
+  --canvas-yellow: 255, 230, 100;
+  --canvas-green: 100, 200, 150;
+  --canvas-blue: 80, 180, 255;
+  --canvas-purple: 180, 150, 255;
+}
+
+/* ===============================================================
+   2. System Variable Mappings
+   =============================================================== */
+body {
+  /* --- 標題顏色 --- */
+  --h1-color: var(--h1-gradient);
+  --h2-color: var(--h2-gradient);
+  --h3-color: var(--h3-gradient);
+  --h4-color: var(--user-text-muted);
+  --h5-color: var(--user-text-muted);
+  --h6-color: var(--user-text-faint);
+
+  /* --- 連結與背景 --- */
+  --link-color:           var(--user-link-internal);
+  --link-external-color:  var(--user-link-external);
+  --background-primary:       var(--user-bg-white);
+  --background-primary-alt:   var(--user-bg-pink-pale);
+  --background-secondary:     var(--user-bg-pink-soft);
+  --background-secondary-alt: var(--user-bg-pink-deep);
+
+  /* --- 介面 --- */
+  --titlebar-background:          var(--user-bg-pink-soft);
+  --titlebar-background-focused:  var(--user-bg-pink-soft);
+  --ribbon-background:            var(--user-bg-pink-soft);
+  --ribbon-background-collapsed:  var(--user-bg-pink-soft);
+  --tab-container-background:     var(--user-bg-pink-soft);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--user-accent-main);
+
+  /* --- 文字 --- */
+  --text-normal: var(--user-text-main);
+  --text-muted:  var(--user-text-muted);
+  --text-faint:  var(--user-text-faint);
+
+  /* --- 互動 --- */
+  --text-selection:           var(--user-selection);
+  --text-highlight-bg:        var(--user-accent-highlight);
+
+  /* --- 邊框 --- */
+  --background-modifier-border:       var(--user-border-light);
+  --background-modifier-border-hover: var(--user-accent-main);
+
+  /* --- Tags --- */
+  --tag-color: var(--user-tag-color);
+  --tag-color-hover: var(--user-tag-color-hover);
+  --tag-background: var(--user-tag-background);
+  --tag-background-hover: var(--user-tag-background-hover);
+}
+
+/* ===============================================================
+   3. Element Color Overrides
+   =============================================================== */
+
+/* 粗體字 */
+strong, b, .cm-strong {
+  color: var(--user-text-bold);
+}
+
+/* 列表 */
+.list-bullet:after,
+.cm-formatting-list-ul,
+.cm-formatting-list-ol {
+  color: var(--user-accent-main);
+}
+ol > li::marker {
+  color: var(--user-accent-main);
+}
+
+/* 連結懸停 */
+a:hover, .internal-link:hover, .external-link:hover, .cm-link:hover, .cm-url:hover {
+  background-color: var(--user-bg-pink-pale);
+}
+
+/* Tags & Marks */
+.tag, .cm-hashtag {
+  background-color: var(--user-tag-background);
+  color: var(--user-tag-color);
+}
+mark {
+  background-color: var(--user-tag-background);
+  color: var(--user-tag-color);
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  border-color: var(--user-accent-main);
+}
+input[type="checkbox"]:checked {
+  box-shadow: inset 0 0 2px var(--user-bg-white);
+}
+
+/* Active Line */
+.markdown-source-view.mod-cm6 .cm-line.cm-active {
+  background-color: var(--user-active-line);
+}
+
+/* ===============================================================
+   4. Code & Tables
+   =============================================================== */
+.markdown-preview-view pre code,
+.cm-s-obsidian pre.HyperMD-codeblock,
+.markdown-rendered pre {
+  background-color: var(--user-bg-pink-pale);
+  color: var(--user-text-main);
+}
+
+.markdown-preview-view table {
+  border-color: var(--user-border-light);
+}
+
+.markdown-preview-view table thead tr > th {
+  background-color: var(--user-bg-pink-deep);
+  color: var(--user-text-main);
+  border-bottom-color: var(--user-accent-main);
+}
+.markdown-preview-view table tbody tr:nth-child(even) {
+  background-color: var(--user-bg-pink-pale);
+}
+
+/* Inline Code */
+body .cm-s-obsidian span.cm-inline-code,
+body .markdown-preview-view :not(pre) > code,
+code {
+  background-color: var(--user-inline-code-bg);
+  color: var(--user-inline-code-text);
+}
+
+/* ===============================================================
+   5. Interface & Scrollbar
+   =============================================================== */
+.nav-file-title.is-active,
+.nav-file-title:hover {
+  background-color: var(--user-bg-pink-pale);
+}
+
+.collapse-icon {
+  color: var(--user-theme-pop);
+}
+
+/* Scrollbar */
+body.theme-light ::-webkit-scrollbar-thumb,
+body.theme-dark ::-webkit-scrollbar-thumb {
+  background-color: var(--user-accent-strong);
+}
+
+body.theme-light ::-webkit-scrollbar-thumb:hover,
+body.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--user-accent-main);
+}
+
+/* ===============================================================
+   6. Graph View
+   =============================================================== */
+.theme-dark .graph-view.color-fill,
+.theme-light .graph-view.color-fill { color: var(--user-text-muted); }
+.graph-view.color-circle { color: var(--user-accent-main); }
+.graph-view.color-line { color: var(--user-border-light); }
+.graph-view.color-text { color: var(--user-text-main); }
+
+/* ===============================================================
+   7. Callout Colors
+   =============================================================== */
+
+
+/* ===============================================================
+   8. Blockquote Colors
+   =============================================================== */
+.theme-light .markdown-preview-view blockquote {
+  background-color: var(--user-bg-blockquote);
+  color: var(--user-text-main);
+}
+
+.theme-dark .markdown-preview-view blockquote {
+  background-color: var(--user-bg-blockquote);
+  color: var(--user-text-main);
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  background-color: var(--user-bg-blockquote);
+  color: var(--user-text-main);
+}
+
+/* ===============================================================
+   9. Misc Colors
+   =============================================================== */
+.cm-footref, .cm-formatting-link, .external-link-icon { color: var(--user-accent-strong); }
+
+/* Horizontal Rule */
+.markdown-preview-view hr,
+hr {
+  background-color: var(--user-accent-strong);
+}
+
+/* Search Result Highlight */
+.cm-s-obsidian span.cm-matched-string,
+.markdown-source-view.mod-cm6 .cm-s-obsidian span.cm-matched-string {
+  background-color: rgba(255, 215, 0, 0.4);
+}
+
+/* Canvas Node Selection */
+.canvas-node.is-selected .canvas-node-container, 
+.canvas-node.is-focused .canvas-node-container {
+  border-color: #FF69B4;
+}
+
+.canvas-selection.mod-group-selection {
+  border-color: #FF69B4;
+}
+
+/* ===============================================================
+   10. Canvas Node Colors
+   =============================================================== */
+.mod-canvas-color-1 { --canvas-color: var(--canvas-red); }
+.mod-canvas-color-2 { --canvas-color: var(--canvas-orange); }
+.mod-canvas-color-3 { --canvas-color: var(--canvas-yellow); }
+.mod-canvas-color-4 { --canvas-color: var(--canvas-green); }
+.mod-canvas-color-5 { --canvas-color: var(--canvas-blue); }
+.mod-canvas-color-6 { --canvas-color: var(--canvas-purple); }
+
+.canvas-color-picker-item.mod-color-1 { background-color: rgb(var(--canvas-red)); }
+.canvas-color-picker-item.mod-color-2 { background-color: rgb(var(--canvas-orange)); }
+.canvas-color-picker-item.mod-color-3 { background-color: rgb(var(--canvas-yellow)); }
+.canvas-color-picker-item.mod-color-4 { background-color: rgb(var(--canvas-green)); }
+.canvas-color-picker-item.mod-color-5 { background-color: rgb(var(--canvas-blue)); }
+.canvas-color-picker-item.mod-color-6 { background-color: rgb(var(--canvas-purple)); }
+
+.canvas-wrapper {
+  background-color: var(--user-canvas-bg);
+}
+
+.theme-light .canvas-node .canvas-node-container,
+.theme-light .canvas-node.is-themed .canvas-node-container {
+  background-color: var(--user-canvas-node);
+}
+
+.theme-dark .canvas-node .canvas-node-container,
+.theme-dark .canvas-node.is-themed .canvas-node-container {
+  background-color: var(--user-canvas-node);
+}
+
+.theme-light .canvas-node.is-themed .canvas-node-content {
+  background-color: rgba(var(--canvas-color), 0.17);
+}
+
+.theme-dark .canvas-node.is-themed .canvas-node-content {
+  background-color: rgba(var(--canvas-color), 0.19);
+}
+
+/* ===============================================================
+   11. Workspace Colors
+   =============================================================== */
+.workspace-split.mod-root,
+.workspace-tabs.mod-top-right-space {
+  background-color: var(--user-bg-pink-soft);
+}
+
+.popover.hover-editor .popover-titlebar,
+.popover.hover-editor.is-pinned.is-pinned.is-active .popover-titlebar,
+.popover.hover-editor.is-pinned.is-pinned .popover-titlebar {
+  background-color: var(--user-text-faint);
+}
+
+/* ===============================================================
+   12. Slides Colors (Obsidian core plugin)
+   =============================================================== */
+.reveal h1 {
+  color: var(--h1-gradient);
+}
+
+.reveal h2 {
+  color: var(--h2-gradient);
+}
+
+.reveal h3 {
+  color: var(--h3-gradient);
+}
+
+.reveal h4, .reveal h5, .reveal h6 {
+  color: var(--user-text-muted);
+}
+
+.reveal .callout-title {
+  color: var(--user-text-muted);
+}
